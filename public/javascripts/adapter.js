@@ -35,7 +35,7 @@ function trace(text) {
   }
 }
 
-if (navigator.mozGetUserMedia) {
+if (navigator.mediaDevices.mozGetUserMedia) {
   console.log('This appears to be Firefox');
 
   webrtcDetectedBrowser = 'firefox';
@@ -66,7 +66,7 @@ if (navigator.mozGetUserMedia) {
   // getUserMedia shim (only difference is the prefix).
   // Code from Adam Barth.
   getUserMedia = navigator.mozGetUserMedia.bind(navigator);
-  navigator.getUserMedia = getUserMedia;
+  navigator.mediaDevices.getUserMedia = getUserMedia;
 
   // Shim for MediaStreamTrack.getSources.
   MediaStreamTrack.getSources = function(successCb) {
@@ -189,7 +189,7 @@ if (navigator.mozGetUserMedia) {
   // Get UserMedia (only difference is the prefix).
   // Code from Adam Barth.
   getUserMedia = navigator.webkitGetUserMedia.bind(navigator);
-  navigator.getUserMedia = getUserMedia;
+  navigator.mediaDevices.getUserMedia = getUserMedia;
 
   // Attach a media stream to an element.
   attachMediaStream = function(element, stream) {
